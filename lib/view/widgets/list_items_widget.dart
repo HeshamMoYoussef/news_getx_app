@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_getx_app/controller/news_controller.dart';
+import 'package:news_getx_app/model/news_model.dart';
 
-class ListItems extends GetView<NewsController> {
-  const ListItems({super.key});
-
+class ListItemsWidget extends GetView<NewsController> {
+  const ListItemsWidget({this.newsModel, super.key});
+  final List<NewsModel>? newsModel;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 10,
+      itemCount: newsModel!.length,
       itemBuilder: (context, index) {
         return Container(
           height: MediaQuery.of(context).size.height * 0.21,
@@ -21,7 +22,8 @@ class ListItems extends GetView<NewsController> {
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
               image: NetworkImage(
-                'https://imagekit.io/blog/content/images/2019/12/image-optimization.jpg',
+                // 'https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg',
+                '${newsModel![index].urlToImage}',
               ),
               fit: BoxFit.cover,
             ),
@@ -29,9 +31,8 @@ class ListItems extends GetView<NewsController> {
           alignment: Alignment.bottomCenter,
 
           child: Container(
-            alignment: Alignment.bottomCenter,
-
-            height: 50,
+            alignment: Alignment.center,
+            height: 60,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.black.withAlpha(100),
@@ -42,10 +43,10 @@ class ListItems extends GetView<NewsController> {
             ),
             padding: const EdgeInsets.all(10),
             child: Text(
-              'Title $index',
+              '${newsModel![index].title}',
               style: Theme.of(
                 context,
-              ).textTheme.titleMedium!.copyWith(color: Colors.white),
+              ).textTheme.titleSmall!.copyWith(color: Colors.white),
             ),
           ),
         );

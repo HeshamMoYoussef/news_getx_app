@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_getx_app/controller/news_controller.dart';
 import 'package:news_getx_app/shared/constants.dart';
-import 'package:news_getx_app/view/widgets/list_items.dart';
+import 'package:news_getx_app/view/widgets/list_items_widget.dart';
 
 class CategoryWidget extends StatefulWidget {
   const CategoryWidget({super.key});
@@ -39,7 +39,9 @@ class _CategoryWidgetState extends State<CategoryWidget>
             controller: tabController,
             // children: [...CategoryList.categoryItems.map((e) => ListItems())],
             children:
-                CategoryList.categoryItems.map((e) => ListItems()).toList(),
+                CategoryList.categoryItems
+                    .map((e) => ListItemsWidget())
+                    .toList(),
           ),
         ),
       ],
