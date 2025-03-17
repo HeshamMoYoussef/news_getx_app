@@ -15,8 +15,7 @@ class ListItemsWidget extends GetView<NewsController> {
           height: MediaQuery.of(context).size.height * 0.21,
           width: double.infinity,
           margin: const EdgeInsets.all(6),
-
-          padding: const EdgeInsets.all(2),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.grey,
             borderRadius: BorderRadius.circular(20),
