@@ -1,8 +1,12 @@
 class CategoryList {
   static List<String> categoryItems = [
     'Business',
-    'General',
-    'Health',
+    'technology',
     'Sports',
+    'Health',
+    'science',
+    'entertainment',
+    'General',
   ];
 }
+  // business entertainment general health science sports technology

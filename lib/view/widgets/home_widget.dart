@@ -13,9 +13,8 @@ class HomeWidget extends GetView<NewsController> {
       builder:
           (controller) =>
               controller.newsList.isNotEmpty
-                  ? ListItemsWidget(newsModel: controller.newsList)
+                  ? ListItemsWidget(newsList: controller.newsList)
                   : Center(child: CircularProgressIndicator()),
-
       // {
       //   if (controller.newsList.isNotEmpty) {
       //     return ListItemsWidget(newsModel: controller.newsList);

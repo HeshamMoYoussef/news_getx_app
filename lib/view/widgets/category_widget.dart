@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_getx_app/controller/news_controller.dart';
+import 'package:news_getx_app/model/news_model.dart';
 import 'package:news_getx_app/shared/constants.dart';
 import 'package:news_getx_app/view/widgets/list_items_widget.dart';
 
@@ -12,6 +13,7 @@ class CategoryWidget extends StatefulWidget {
 
 class _CategoryWidgetState extends State<CategoryWidget>
     with SingleTickerProviderStateMixin {
+  final NewsController newsController = Get.find<NewsController>();
   late TabController? tabController = TabController(
     length: CategoryList.categoryItems.length,
     vsync: this,
@@ -19,13 +21,14 @@ class _CategoryWidgetState extends State<CategoryWidget>
 
   @override
   Widget build(BuildContext context) {
-    Get.find<NewsController>();
+    newsController;
     return Column(
       children: [
         TabBar(
           controller: tabController,
           isScrollable: true,
-          padding: const EdgeInsets.all(10),
+          
+                    padding: const EdgeInsets.all(10),
           labelColor: Colors.blue,
           unselectedLabelColor: Colors.grey,
           indicatorColor: Colors.blue,
@@ -40,7 +43,22 @@ class _CategoryWidgetState extends State<CategoryWidget>
             // children: [...CategoryList.categoryItems.map((e) => ListItems())],
             children:
                 CategoryList.categoryItems
-                    .map((e) => ListItemsWidget())
+                    .map(
+                      (e) => FutureBuilder(
+                        future: newsController.getCategory(category: e),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return ListItemsWidget(
+                              newsList: snapshot.data as List<NewsModel>,
+                            );
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
+                      ),
+                    )
                     .toList(),
           ),
         ),

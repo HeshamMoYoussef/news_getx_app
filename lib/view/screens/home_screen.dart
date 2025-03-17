@@ -61,7 +61,8 @@ class HomeScreen extends GetView<NewsController> {
           builder:
               (controller) => BottomNavigationBar(
                 currentIndex: controller.index,
-
+                fixedColor: Colors.blue,
+                type: BottomNavigationBarType.fixed,
                 onTap: (index) {
                   controller.changeIndexNavBar(currentIndex: index);
                   controller.pageController.jumpToPage(index);
