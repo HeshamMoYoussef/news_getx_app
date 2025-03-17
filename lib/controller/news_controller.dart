@@ -37,12 +37,12 @@ class NewsController extends GetxController {
 
   ApiHelper apiHelper = ApiHelper();
   List<NewsModel> newsList = [];
+  List<NewsModel> categoryList = [];
   void getHeadlines() async {
     newsList = await apiHelper.getHeadlines();
     update();
   }
 
-  List<NewsModel> categoryList = [];
   Future<List<NewsModel>> getCategory({required String category}) async {
     categoryList = await apiHelper.getCategory(category: category);
     update();

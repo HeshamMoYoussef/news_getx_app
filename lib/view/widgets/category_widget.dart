@@ -27,8 +27,7 @@ class _CategoryWidgetState extends State<CategoryWidget>
         TabBar(
           controller: tabController,
           isScrollable: true,
-          
-                    padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           labelColor: Colors.blue,
           unselectedLabelColor: Colors.grey,
           indicatorColor: Colors.blue,

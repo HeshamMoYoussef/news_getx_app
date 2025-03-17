@@ -9,6 +9,7 @@ class ListItemsWidget extends GetView<NewsController> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const BouncingScrollPhysics(),
       itemCount: newsList.length,
       itemBuilder: (context, index) {
         return Container(
